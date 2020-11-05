@@ -6,7 +6,7 @@
     "build": "react-scripts build",
     "coverage": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=development react-scripts start",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test",
     "serve": "./node_modules/.bin/http-server ./build --port 1337",
     "e2e:open": "cd e2e && ./node_modules/.bin/cypress open; cd ..",
@@ -38,10 +38,12 @@
     "@testing-library/jest-dom": "5.11.3",
     "@testing-library/react": "10.4.8",
     "react": "16.13.1",
+    "react-device-detect": "^1.14.0",
     "react-dom": "16.13.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.3",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "cross-env": "7.0.2",
