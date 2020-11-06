@@ -1,18 +1,21 @@
 import styled, { css } from "styled-components";
 
 export const Button = styled.button`
-  ${({theme, active}) => css`
+  ${({active, colors}) => css`
     font-size: 1.4em;
-    background-color: ${active ? theme.colors.activeProductButton : theme.colors.inactiveProductButton};
-    color: ${theme.colors.textWhite};
+    background-color: ${colors.backgroundColor};
+    color: ${colors.textColor};
+    ${colors.borderColor && css`border: 1px solid ${colors.borderColor};`};
     padding: 10px 20px;
     border-radius: 4px;
-    ${active && css`cursor: pointer`};
+    ${active && css `cursor: pointer`};
     transition: .2s;
     
     ${active && css`
       &:hover {
-        background-color: ${theme.colors.hoverProductButton};
+        ${colors.hoverBorderColor && css`border: 1px solid ${colors.hoverBorderColor};`};
+        ${colors.hoverTextColor && css`color: ${colors.hoverTextColor};`};
+        ${colors.hoverBackgroundColor && css`background-color: ${colors.hoverBackgroundColor};`};
       }
     `}
   `}

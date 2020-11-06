@@ -35,3 +35,11 @@ export const text = `
     font-weight: 600;
 `
 ;
+
+export const centerImage = `
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`
+;

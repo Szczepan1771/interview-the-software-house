@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { isMobileOnly } from "react-device-detect";
-import {text, leadingText} from "../../../../utils/sharedStyles";
+import { text, leadingText, centerImage } from "../../../../utils/sharedStyles";
 
 export const Container = styled.div`
   ${({theme}) => css`
@@ -10,7 +10,7 @@ export const Container = styled.div`
       position: relative;
       margin: 16px 10px;
       width: 100%;
-      max-width: ${isMobileOnly ? "360px" : "288px"}; 
+      max-width: ${isMobileOnly ? "330px" : "288px"}; 
       min-height: 400px;
       background-color: ${theme.colors.backgroundCard};
       border-radius: 8px;
@@ -26,12 +26,9 @@ export const ImageSection = styled.section`
       height: 180px;
       position: relative;
       & > img {
+        ${centerImage};
         width: 100%;
         height: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         ${!active && css`filter: grayscale(100%)`}
       }
   `}

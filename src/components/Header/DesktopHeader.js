@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "./styles";
 import SearchComponent from "../SearchComponent";
 import FilterComponent from "../FilterComponent";
+import UserDropdown from "../UserDropdown";
 
 function DesktopHeader({searchConfig, filterConfig}) {
     const {search, handleSearch} = searchConfig;
@@ -19,7 +20,7 @@ function DesktopHeader({searchConfig, filterConfig}) {
                 />}
             </S.DesktopSection>
             <S.DesktopSection>
-
+                <UserDropdown/>
             </S.DesktopSection>
         </S.DesktopHeader>
     )

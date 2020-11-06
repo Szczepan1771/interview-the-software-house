@@ -1,11 +1,14 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+import {isMobileOnly} from "react-device-detect";
 
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100%;
-  min-width: 100px;
-  max-width: 200px;
+  justify-content: ${isMobileOnly ? "space-between" : "space-around"};
+  width: ${isMobileOnly ? "auto" : "100%"};
+  ${!isMobileOnly && css`
+    min-width: 100px;
+    max-width: 200px;
+  `}
 `
 ;

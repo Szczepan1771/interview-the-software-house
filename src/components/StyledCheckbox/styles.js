@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components";
+import {isMobileOnly} from "react-device-detect";
 
 export const Container = styled.div`
   ${({theme}) => css`
       display: flex;
       align-items: center;
-      
+      ${isMobileOnly && css`margin-right: 32px;`}
       & > label {
             margin-left: 8px;
             font-size: 1.4em;

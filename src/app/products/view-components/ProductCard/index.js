@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RatingComponent from "../../../../components/RatingComponent";
 import Button from "../../../../components/Button";
 
 import * as S from "./styles";
+import ProductModal from "../../../../components/ProductModal";
 
 function ProductCard({data}) {
     const {id, name, description, image, rating, active, promo} = data;
+    const [isActivePreview, setIsActivePreview] = useState(false);
+
     return (
         <S.Container>
             {promo && <S.PromoIcon>Promo</S.PromoIcon>}
@@ -24,9 +27,11 @@ function ProductCard({data}) {
                     <Button
                         active={active}
                         text={active ? "Show details" : "Unavailable"}
+                        handleClick={() => active && setIsActivePreview(true)}
                     />
                 </div>
             </S.InfoSection>
+            {isActivePreview && <ProductModal data={data} callback={() => setIsActivePreview(false)}/>}
         </S.Container>
     )
 }

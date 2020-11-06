@@ -39,6 +39,7 @@ export const MobileSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 48px;
   
 `
 ;
@@ -47,7 +48,7 @@ export const Logo = styled.h1`
   font-size: 2.4em;
   font-weight: 600;
   line-height: 4em;
-  ${!isMobileOnly && css`margin-right: 105px`}
+  ${!isMobileOnly && css`margin-right: ${isMobile ? "55px" : "105px"}`}
 `
 ;
 

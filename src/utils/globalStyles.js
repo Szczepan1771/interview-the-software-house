@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         overflow-x: hidden;
+        user-select: none;
             
         input:focus {
           outline: 0;
