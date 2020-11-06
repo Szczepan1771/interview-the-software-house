@@ -8,7 +8,7 @@ export const Container = styled.div`
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      margin: 16px 0;
+      margin: 16px 10px;
       width: 100%;
       max-width: ${isMobileOnly ? "360px" : "288px"}; 
       min-height: 400px;
@@ -16,7 +16,6 @@ export const Container = styled.div`
       border-radius: 8px;
       overflow: hidden;
   `}
-
 `
 ;
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import StyledCheckbox from "../StyledCheckbox";
 
+import * as S from "./styles";
+
 function FilterComponent({filterArray, callback}) {
     return (
-        <div>
+        <S.Container>
             {filterArray.map(item => (
                 <StyledCheckbox
                     callback={(value) => callback(item.name.toLowerCase(), value)}
@@ -11,7 +13,7 @@ function FilterComponent({filterArray, callback}) {
                     item={item}
                 />
             ))}
-        </div>
+        </S.Container>
     )
 }
 

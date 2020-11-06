@@ -3,6 +3,7 @@ import styled, {css} from "styled-components";
 export const SearchComponentWrapper = styled.div`
   display: flex;
   position: relative;
+  width: 100%;
   max-width: 400px;
 `
 ;

@@ -13,7 +13,10 @@ export default {
         inactiveProductButton: "#9194A5",
         inputBorder: "#E0E2EA",
         paginatorActiveElement: "#4460F7",
-        paginatorDisableElement: "#9194A5"
+        paginatorDisableElement: "#9194A5",
+        checkboxBackground: "#4460F7",
+        inactiveCheckboxBorder: "#E0E2EA",
+        checkedCheckboxContent: "#FFFFFF"
     },
     fonts: {
 

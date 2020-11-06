@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 
+import * as S from "./styles";
+
 function StyledCheckbox({item, callback}) {
     const [checked, setChecked] = useState(item.defaultValue);
 
@@ -9,7 +11,7 @@ function StyledCheckbox({item, callback}) {
     };
 
     return (
-        <div>
+        <S.Container>
             <input
                 value={checked}
                 type="checkbox"
@@ -21,7 +23,7 @@ function StyledCheckbox({item, callback}) {
             >
                 {item.name}
             </label>
-        </div>
+        </S.Container>
     )
 }
 

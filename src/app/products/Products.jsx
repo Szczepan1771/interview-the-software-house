@@ -1,17 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 
-import Paginator from "../../components/Paginator";
-import SearchComponent from "../../components/SearchComponent";
-
-import { AppRoute } from '../../routing/AppRoute.enum';
 import { fetchApi } from "../../utils/fetchApi";
 import { usePaginator } from "../../utils/hooks/usePaginator";
 
 import * as S from './styles';
 import ProductCard from "./view-components/ProductCard";
 import NoResultsContent from "../../components/NoResultContent";
-import FilterComponent from "../../components/FilterComponent";
+import Header from "../../components/Header";
+import Paginator from "../../components/Paginator";
 
 const filterArray = [
     {
@@ -40,6 +36,7 @@ export const Products = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemCount] = useState(8);
     const [totalPages, setTotalPages] = useState(null);
+    const headerRef = useRef(null);
 
     const handleSearch = useCallback((e) => {
         setCurrentPage(1);
@@ -78,24 +75,21 @@ export const Products = () => {
         }
 
         fetchProduct();
-    }, [currentPage, itemCount, searchValue, filter]);
+    }, [currentPage, itemCount, searchValue, filter, headerRef]);
 
     return (
         <>
-            <S.Header>
-                <div>
-                    <SearchComponent
-                        handleSearch={handleSearch}
-                    />
-                </div>
-                <div>
-                    <FilterComponent
-                        filterArray={filterArray}
-                        callback={handleFilter}
-                    />
-                    <Link to={AppRoute.login}> Login </Link>
-                </div>
-            </S.Header>
+            <Header
+                searchConfig={{
+                    search: true,
+                    handleSearch
+                }}
+                filterConfig={{
+                    filter: true,
+                    handleFilter,
+                    filterArray
+                }}
+            />
             <S.ProductSection items={data.length > 0}>
                 {data.length > 0 ?
                     <>
@@ -117,7 +111,7 @@ export const Products = () => {
                         />
                     </>
                     :
-                    <NoResultsContent
+                    !isLoading && <NoResultsContent
                         text={"product"}
                     />
                 }
