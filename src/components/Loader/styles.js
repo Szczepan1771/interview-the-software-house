@@ -26,11 +26,11 @@ export const Container = styled.div`
 export const Loader = styled.div`
   ${({theme}) => css`
       animation: ${spin} 2s linear infinite;
-      border: 2px solid ${theme.colors.inputBorder};
+      border: 4px solid ${theme.colors.inputBorder};
       border-radius: 50%;
+      border-top: 4px solid ${theme.colors.activeButton};
       width: 56px;
       height: 56px;
-      border-top: 2px solid ${theme.colors.activeButton};
   `}
 `
 ;

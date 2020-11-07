@@ -7,34 +7,43 @@ export const usePaginator = (selectedPage, itemCount, totalPages, maxSize = 6) =
 
     useEffect(() => {
         document.body.scrollIntoView();
-        const lastPaginatorNumber = selectedPage + maxSize < totalPages ? selectedPage + (maxSize - 1) : totalPages;
+        const lastThreeItems = selectedPage  <= totalPages ? [totalPages - 2, totalPages - 1, totalPages] : [totalPages - 5, totalPages - 4, totalPages - 3];
         setFirstIsActive(!(selectedPage > 1));
         setLastIsActive(!(selectedPage < totalPages));
-        setPagesRange(pageRangeMapper(selectedPage, lastPaginatorNumber, totalPages, maxSize))
+        setPagesRange(pageMapper(selectedPage, totalPages, maxSize, lastThreeItems))
     }, [selectedPage, totalPages, maxSize]);
 
     return {pageRange, firstIsActive, lastIsActive}
 };
 
-const pageRangeMapper = (selectedPage, lastPageNumber, totalPages, maxSize) => {
-    let arr = [];
-    for (let i = selectedPage; i <= lastPageNumber; i++) {
-        arr.push(i);
-        if (totalPages > maxSize && selectedPage > totalPages - maxSize) {
-            arr = pageMapper(lastPageNumber, totalPages).splice(totalPages - maxSize, maxSize);
+const pageMapper = (selectedPage, totalPages, maxSize, lastThreeItems) => {
+    let arr = [...lastThreeItems];
+    if(selectedPage === 1 && totalPages >= (maxSize/2)) {
+        for (let i = selectedPage; i < selectedPage + (maxSize/2); i++) {
+            arr.push(i)
         }
-        if (totalPages <= maxSize) {
-            arr = pageMapper(lastPageNumber, totalPages);
+    } else {
+        for(let i = selectedPage - 1; i < selectedPage + (maxSize/2) - 1; i++) {
+            if(i <= totalPages) {
+                arr.push(i)
+            }
         }
     }
-    return arr
+    const newArr = [... new Set(arr)];
+
+    checkPaginatorLength(newArr, totalPages, maxSize);
+
+    return newArr.sort((a, b) => a < b ? -1 : 1);
 };
 
-const pageMapper = (lastPageNumber) => {
-    let pagesNumber = [];
-    for (let i = 1; i <= lastPageNumber; i++) {
-        pagesNumber.push(i);
+const checkPaginatorLength = (arr, totalPages, maxSize) => {
+    const length = arr.length;
+
+    if(totalPages >= maxSize) {
+        for (let i = 1; i <= maxSize - length; i++) {
+            arr.push((totalPages - maxSize) + i)
+        }
     }
-    return pagesNumber;
 };
+
 
