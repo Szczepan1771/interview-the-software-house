@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 
 import * as S from "./styles"
 import PaginatorElement from "./PaginatorElement";
 
 function Paginator({pageRange, currentPage, lastPage, setCurrentPage, firstIsActive, lastIsActive}) {
-    const paginatorListMapper = () => {
+    const paginatorListMapper = useMemo(() => {
         if (pageRange.length !== 6) {
             return pageRange.map(item => (
                 <PaginatorElement
@@ -44,7 +44,7 @@ function Paginator({pageRange, currentPage, lastPage, setCurrentPage, firstIsAct
                 )
             }
         })
-    };
+    }, [pageRange]);
 
     return (
         <S.Container>
@@ -53,7 +53,7 @@ function Paginator({pageRange, currentPage, lastPage, setCurrentPage, firstIsAct
                 handleSelect={() => !firstIsActive && setCurrentPage(1)}
                 isDisabled={firstIsActive}
             />
-            {paginatorListMapper()}
+            {paginatorListMapper}
             <PaginatorElement
                 value={"Last"}
                 handleSelect={() => !lastIsActive && setCurrentPage(lastPage)}
