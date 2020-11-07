@@ -24,14 +24,14 @@ export const centerFlexColumnBox = `
 
 export const leadingText = `
   font-size: 1.8em;
-  line-height: 1.6em;
+  line-height: 1.8em;
   font-weight: 600;
 `
 ;
 
 export const text = `
     font-size: 1.4em;
-    line-height: 1.6em;
+    line-height: 1.4em;
     font-weight: 600;
 `
 ;

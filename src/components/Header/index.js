@@ -1,16 +1,24 @@
-import React, { useMemo } from "react";
-
+import React from "react";
+import {useHistory} from "react-router-dom";
 import { isMobileOnly } from "react-device-detect";
 import DesktopHeader from "./DesktopHeader";
 import MobileHeader from "./MobileHeader";
+import { AppRoute } from "../../routing/AppRoute.enum";
 
 function Header({searchConfig, filterConfig}) {
-    return useMemo(() => {
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push(AppRoute.home);
+    };
+
+    const headerContent = () => {
         if (!isMobileOnly) {
             return (
                 <DesktopHeader
                     searchConfig={searchConfig}
                     filterConfig={filterConfig}
+                    handleClick={handleClick}
                 />
             )
         }
@@ -19,9 +27,12 @@ function Header({searchConfig, filterConfig}) {
             <MobileHeader
                 searchConfig={searchConfig}
                 filterConfig={filterConfig}
+                handleClick={handleClick}
             />
         )
-    }, [searchConfig, filterConfig]);
+    };
+
+    return headerContent()
 }
 
 export default Header

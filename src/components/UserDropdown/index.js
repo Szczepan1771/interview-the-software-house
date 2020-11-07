@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState, useRef } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 
 import { AppRoute } from '../../routing/AppRoute.enum';
@@ -29,43 +29,49 @@ function UserDropdown() {
         setIsActive(false);
     };
 
+    const handleLogin = () => {
+        history.push(AppRoute.login)
+    }
+
     useClickOutside(listRef, () => setIsActive(false));
 
-    return useMemo(() => {
-        if (!isLogged) {
+    const userDropdown = () => {
+        if (history.location.pathname !== AppRoute.login) {
+            if (!isLogged) {
+                return (
+                    <Button
+                        text={"Log in"}
+                        propsColors={theme.buttonColors.normalWhiteButton}
+                        handleClick={handleLogin}
+                    />
+                )
+            }
+
             return (
-                <Button
-                    text={"Log in"}
-                    propsColors={{
-                        borderColor: theme.colors.activeButton,
-                        backgroundColor: theme.colors.white,
-                        textColor: theme.colors.activeButton,
-                        hoverTextColor: theme.colors.hoverButton,
-                        hoverBorderColor: theme.colors.hoverButton
-                    }}
-                    handleClick={() => handleLogged(true)}
-                />
+                <S.UserDropdownContainer ref={listRef}>
+                    <S.AvatarContainer onClick={() => setIsActive(!isActive)}>
+                        <img src={avatar} alt="user-avatar"/>
+                    </S.AvatarContainer>
+                    <S.DropdownList isActive={isActive}>
+                        {listItems.map((item, i) => (
+                            <S.ListItem
+                                onClick={() => handleClick(item.name)}
+                                key={`${item}-${i}`}
+                            >
+                                {item.name}
+                            </S.ListItem>
+                        ))}
+                    </S.DropdownList>
+                </S.UserDropdownContainer>
             )
         }
 
-        return (
-            <S.UserDropdownContainer ref={listRef}>
-                <S.AvatarContainer onClick={() => setIsActive(!isActive)}>
-                    <img src={avatar} alt="user-avatar"/>
-                </S.AvatarContainer>
-                <S.DropdownList isActive={isActive}>
-                    {listItems.map((item, i) => (
-                        <S.ListItem
-                            onClick={() => handleClick(item.name)}
-                            key={`${item}-${i}`}
-                        >
-                            {item.name}
-                        </S.ListItem>
-                    ))}
-                </S.DropdownList>
-            </S.UserDropdownContainer>
-        )
-    }, [isLogged, isActive])
+        return null;
+
+    }
+
+    return userDropdown()
+
 }
 
 export default UserDropdown;

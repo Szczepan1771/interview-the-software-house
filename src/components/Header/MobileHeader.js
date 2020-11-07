@@ -4,25 +4,22 @@ import FilterComponent from "../FilterComponent";
 import * as S from "./styles";
 import UserDropdown from "../UserDropdown";
 
-function MobileHeader({searchConfig, filterConfig}) {
-    const {search, handleSearch} = searchConfig;
-    const {filter, handleFilter, filterArray} = filterConfig;
-
+function MobileHeader({searchConfig, filterConfig, handleClick}) {
     return (
         <S.MobileHeader>
             <S.MobileSection>
-                <S.Logo>join.tsh.io</S.Logo>
+                <S.Logo onClick={handleClick}>join.tsh.io</S.Logo>
                 <UserDropdown/>
             </S.MobileSection>
-            {search &&
+            {searchConfig && searchConfig.search &&
             <SearchComponent
-                handleSearch={handleSearch}
+                handleSearch={searchConfig.handleSearch}
             />}
             <S.MobileSection>
-                {filter &&
+                {filterConfig && filterConfig.filter &&
                 <FilterComponent
-                    filterArray={filterArray}
-                    callback={handleFilter}
+                    filterArray={filterConfig.filterArray}
+                    callback={filterConfig.handleFilter}
                 />}
             </S.MobileSection>
         </S.MobileHeader>

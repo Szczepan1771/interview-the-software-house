@@ -9,7 +9,7 @@ export const Container = styled.div`
       & > label {
             margin-left: 8px;
             font-size: 1.4em;
-            font-weight: 500;
+            font-weight: 600;
             position: relative;
             cursor: pointer;
 

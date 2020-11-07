@@ -4,6 +4,7 @@ import Button from "../../../../components/Button";
 
 import * as S from "./styles";
 import ProductModal from "../../../../components/ProductModal";
+import theme from "../../../../utils/theme";
 
 function ProductCard({data}) {
     const {id, name, description, image, rating, active, promo} = data;
@@ -26,6 +27,7 @@ function ProductCard({data}) {
                     />
                     <Button
                         active={active}
+                        propsColors={active ? theme.buttonColors.normalColorButton : theme.buttonColors.inactiveButton}
                         text={active ? "Show details" : "Unavailable"}
                         handleClick={() => active && setIsActivePreview(true)}
                     />

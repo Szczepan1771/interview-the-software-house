@@ -19,7 +19,9 @@ export const DesktopSection = styled.section`
   ${({maxWidth}) => css`
     ${centerFlexRow};
     justify-content: flex-start;
-    ${maxWidth && css`flex: 1`};
+    ${maxWidth && css`
+      flex: 1;
+    `};
   `}
 `
 ;
@@ -28,10 +30,9 @@ export const MobileHeader = styled.header`
   ${({theme}) => css`
       display: flex;
       flex-direction: column;
-      padding: 25px;
+      padding: 0 25px;
       background-color: ${theme.colors.backgroundHeader};
   `}
-
 `
 ;
 
@@ -45,6 +46,7 @@ export const MobileSection = styled.section`
 ;
 
 export const Logo = styled.h1`
+  cursor: pointer;
   font-size: 2.4em;
   font-weight: 600;
   line-height: 4em;

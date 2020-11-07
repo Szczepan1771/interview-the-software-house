@@ -8,6 +8,7 @@ import ProductCard from "./view-components/ProductCard";
 import NoResultsContent from "../../components/NoResultContent";
 import Header from "../../components/Header";
 import Paginator from "../../components/Paginator";
+import Loader from "../../components/Loader";
 
 const filterArray = [
     {
@@ -109,9 +110,10 @@ export const Products = () => {
                             firstIsActive={firstIsActive}
                             lastIsActive={lastIsActive}
                         />
+                        {isLoading && <Loader/>}
                     </>
                     :
-                    !isLoading && <NoResultsContent
+                    isLoading ? <Loader/> :<NoResultsContent
                         text={"product"}
                     />
                 }
