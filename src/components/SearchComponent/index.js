@@ -18,6 +18,7 @@ function SearchComponent({value, handleSearch}) {
     return (
         <S.SearchComponentWrapper>
             <S.SearchInput
+                aria-label={'search-input'}
                 value={searchValue}
                 onChange={handleChange}
                 type="text"
