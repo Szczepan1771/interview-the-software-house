@@ -44,7 +44,7 @@ function Paginator({pageRange, currentPage, lastPage, setCurrentPage, firstIsAct
                 )
             }
         })
-    }, [pageRange]);
+    }, [pageRange, currentPage, setCurrentPage]);
 
     return (
         <S.Container>

@@ -29,7 +29,7 @@ const pageMapper = (selectedPage, totalPages, maxSize, lastThreeItems) => {
             }
         }
     }
-    const newArr = [... new Set(arr)];
+    const newArr = [...new Set(arr)];
 
     checkPaginatorLength(newArr, totalPages, maxSize);
 

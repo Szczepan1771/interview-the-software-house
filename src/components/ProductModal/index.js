@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import ProductPreview from "./ProductPreview";
 
 import * as S from "./styles"

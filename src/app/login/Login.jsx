@@ -21,7 +21,7 @@ export const Login = () => {
     return (
         <S.Container>
             <S.ImageWrapper>
-                <img src={loginPhoto} alt="login photo"/>
+                <img src={loginPhoto} alt="person"/>
             </S.ImageWrapper>
             <S.FormContainer>
                 <Header/>
