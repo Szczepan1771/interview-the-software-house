@@ -5,7 +5,6 @@ export const usePaginator = (selectedPage, itemCount, totalPages, maxSize = 6) =
     const [firstIsActive, setFirstIsActive] = useState(false);
     const [lastIsActive, setLastIsActive] = useState(false);
 
-    console.log(pageRange);
     useEffect(() => {
         document.body.scrollIntoView();
         const lastThreeItems = selectedPage  <= totalPages ? [totalPages - 2, totalPages - 1, totalPages] : [totalPages - 5, totalPages - 4, totalPages - 3];

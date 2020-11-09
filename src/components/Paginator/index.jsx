@@ -4,7 +4,6 @@ import * as S from "./styles"
 import PaginatorElement from "./PaginatorElement";
 
 function Paginator({pageRange, currentPage, lastPage, setCurrentPage, firstIsActive, lastIsActive}) {
-    console.log(pageRange);
     const paginatorListMapper = useMemo(() => {
         if (pageRange.length !== 6) {
             return pageRange.map(item => (
