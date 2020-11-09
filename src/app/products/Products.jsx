@@ -45,11 +45,14 @@ export const Products = () => {
     }, []);
 
     const handleFilter = (name, value) => {
+        setCurrentPage(1);
         setFilter({
             ...filter,
             [name]: value
         })
     };
+
+    console.log(currentPage);
 
     const {pageRange, firstIsActive, lastIsActive} = usePaginator(currentPage, itemCount, totalPages);
 
